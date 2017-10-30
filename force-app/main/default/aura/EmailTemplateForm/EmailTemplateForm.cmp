@@ -1,0 +1,11 @@
+<aura:component >
+    <aura:attribute name="contactId" type="String" />
+    <aura:attribute name="productId" type="String" />
+    <aura:registerEvent name="generateEmailTemplate" type="c:generateEmailTemplate"/>
+
+    <form class="slds-form--stacked">
+        <lightning:input aura:id="generatetextform" label="Contact Id" name="contactId" value="{!v.contactId}" required="true" />
+        <lightning:input aura:id="generatetextform" label="Product Id" name="productId" value="{!v.productId}" required="true" />
+        <lightning:button label="Generate Email" class="slds-m-top--medium" variant="brand" onclick="{!c.clickCreate}" />
+    </form>
+</aura:component>

@@ -1,10 +1,55 @@
-<aura:component>
-    <aura:attribute name="selectedId" type="String"/>
-    <l_lookup:Lookup objectType="Account" 
-        label="Customer"
-        selectedRecordId="{! v.selectedId }"
-        readOnly="false"
-        showFiveRecent="true"
-        widthPX="400px">
-    </l_lookup:Lookup>
-</aura:component>	
+<aura:component controller="EmailTemplateGeneratorController" implements="force:appHostable,flexipage:availableForAllPageTypes">
+    <aura:handler name="generateEmailTemplate" event="c:generateEmailTemplate" action="{!c.handleTextGeneration}" />
+    <aura:attribute name="templateText" type="String" />
+
+    <!-- PAGE HEADER -->
+    <lightning:layout class="slds-page-header slds-page-header--object-home">
+        <lightning:layoutItem>
+            <lightning:icon iconName="standard:scan_card" alternativeText="Email Generator" />
+        </lightning:layoutItem>
+        <lightning:layoutItem padding="horizontal-medium">
+            <div class="page-section page-header">
+                <h1 class="slds-text-heading--label">Email</h1>
+                <h2 class="slds-text-heading--medium">Template generator</h2>
+            </div>
+        </lightning:layoutItem>
+    </lightning:layout>
+    <!-- / PAGE HEADER -->
+
+    <!-- GENERATE NEW EMAIL TEMPLATE -->
+    <lightning:layout>
+        <lightning:layoutItem padding="around-small" size="6">
+            <div aria-labelledby="generatetextform">
+                <fieldset class="slds-box slds-theme--default slds-container--small">
+                    <legend id="generatetextform" class="slds-text-heading--small 
+                      slds-p-vertical--medium">
+                        Input Criterias
+                    </legend>
+                    <!-- NEW TEMPLATE FORM -->
+                    <lightning:layout>
+                        <lightning:layoutItem padding="around-small" size="6">
+                            <c:EmailTemplateForm />
+                        </lightning:layoutItem>
+                    </lightning:layout>
+                    <!-- NEW TEMPLATE FORM -->
+                </fieldset>
+            </div>
+        </lightning:layoutItem>
+    </lightning:layout>
+    <!-- / GENERATE NEW EMAIL TEMPLATE -->
+
+    <!-- GENERATED TEMPLATE TEXT -->
+    <lightning:layout>
+        <lightning:layoutItem padding="around-small" size="6">
+            <!-- <c:expensesList expenses="{!v.templateText}" /> -->
+            <h2>{!v.templateText}</h2>
+        </lightning:layoutItem>
+        <lightning:layoutItem padding="around-small" size="6">
+            <p>Insert Contact and Product ID</p>
+            <p>Copy text and insert in mail</p>
+        </lightning:layoutItem>
+    </lightning:layout>
+    <!-- / GENERATED TEMPLATE TEXT -->
+
+
+</aura:component>
