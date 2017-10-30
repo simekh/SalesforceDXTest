@@ -4,5 +4,7 @@
     "orgPreferences" : {
         "enabled": ["S1DesktopEnabled"]
     },
-    "features": "DebugApex"
+    "features": "DebugApex",
+    "country": "GB",
+    "language": "en-US"
 }

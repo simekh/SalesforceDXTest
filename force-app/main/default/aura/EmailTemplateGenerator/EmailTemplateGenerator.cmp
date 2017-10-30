@@ -1,3 +1,10 @@
 <aura:component>
-
+    <aura:attribute name="selectedId" type="String"/>
+    <l_lookup:Lookup objectType="Account" 
+        label="Customer"
+        selectedRecordId="{! v.selectedId }"
+        readOnly="false"
+        showFiveRecent="true"
+        widthPX="400px">
+    </l_lookup:Lookup>
 </aura:component>	
